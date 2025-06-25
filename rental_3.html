@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Giapis | Premium Vehicle Rentals in Santorini</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== GLOBAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f97316;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --success: #10b981;
+            --error: #ef4444;
+            --winter: #38bdf8;
+            --spring: #4ade80;
+            --summer: #fbbf24;
+            --autumn: #f97316;
+            --scooter: #8b5cf6;
+            --atv: #ec4899;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            margin-left: 15px;
+        }
+        
+        .btn-secondary:hover {
+            color: var(--secondary);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* ===== HEADER STYLES ===== */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 18px;
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--primary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1565967511849-76a60a516170?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, var(--light), transparent);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .location-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-top: 20px;
+            font-weight: 600;
+            border: 2px solid white;
+        }
+        
+        .location-badge i {
+            margin-right: 8px;
+        }
+        
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 50px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        /* ===== VEHICLES SECTION ===== */
+        .vehicles {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .vehicles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .vehicle-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .vehicle-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .vehicle-img {
+            height: 220px;
+            background-color: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .vehicle-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6));
+        }
+        
+        .vehicle-img span {
+            position: relative;
+            z-index: 2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+        
+        .vehicle-content {
+            padding: 25px;
+        }
+        
+        .vehicle-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .vehicle-title h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+        
+        .price {
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .pricing-table th, .pricing-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .pricing-table th {
+            background-color: var(--light);
+            font-weight: 600;
+        }
+        
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .pricing-table tr.winter {
+            background-color: rgba(56, 189, 248, 0.1);
+        }
+        
+        .pricing-table tr.spring {
+            background-color: rgba(74, 222, 128, 0.1);
+        }
+        
+        .pricing-table tr.summer {
+            background-color: rgba(251, 191, 36, 0.1);
+        }
+        
+        .pricing-table tr.autumn {
+            background-color: rgba(249, 115, 22, 0.1);
+        }
+        
+        .vehicle-type {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .car {
+            background-color: #dbeafe;
+            color: var(--primary);
+        }
+        
+        .scooter {
+            background-color: #ede9fe;
+            color: var(--scooter);
+        }
+        
+        .atv {
+            background-color: #fce7f3;
+            color: var(--atv);
+        }
+        
+        .buggy {
+            background-color: #dcfce7;
+            color: #16a34a;
+        }
+        
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            font-size: 24px;
+            color: var(--primary);
+            margin-right: 15px;
+            min-width: 30px;
+        }
+        
+        .contact-text h4 {
+            margin-bottom: 5px;
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .form-status {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .form-status.success {
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+            display: block;
+        }
+        
+        .form-status.error {
+            background-color: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--error);
+            color: var(--error);
+            display: block;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-col p {
+            margin-bottom: 10px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+        
+        /* ===== PAGE NAVIGATION ===== */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav li {
+                margin: 10px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px auto;
+                max-width: 200px;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo"><i class="fas fa-car"></i>Rental <span>Giapis</span></a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#vehicles" class="nav-link" data-page="vehicles">Vehicles</a></li>
+                    <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <section id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>Quality Vehicles for Your Santorini Adventures</h1>
+                <p>Discover our premium collection of cars, scooters, ATVs and buggies available for rent in beautiful Santorini.</p>
+                <a href="#vehicles" class="btn nav-link" data-page="vehicles">View Vehicles</a>
+                <a href="#contact" class="btn btn-secondary nav-link" data-page="contact">Contact Us</a>
+                
+                <div class="location-badge">
+                    <i class="fas fa-map-marker-alt"></i> Located in Santorini, Greece
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Why Choose Rental Giapis?</h2>
+                    <p>We provide top-notch vehicles and exceptional service to make your Santorini rental experience seamless.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3>Premium Vehicles</h3>
+                        <p>Our fleet consists of well-maintained, high-quality vehicles for your comfort and safety.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tag"></i>
+                        </div>
+                        <h3>Competitive Pricing</h3>
+                        <p>Flexible rental periods with pricing that fits your budget. Discounts for longer rentals.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3>Santorini Experts</h3>
+                        <p>We know the best routes and viewpoints to make your Santorini experience unforgettable.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>Dedicated Support</h3>
+                        <p>Our team is available to assist you throughout your rental period for a worry-free experience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Vehicles Page -->
+    <section id="vehicles" class="page">
+        <section class="vehicles">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Vehicle Fleet</h2>
+                    <p>Choose from our selection of premium vehicles in Santorini. All rentals include comprehensive insurance.</p>
+                </div>
+                
+                <div class="vehicles-grid" id="vehicles-container">
+                    <!-- Vehicle cards will be generated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Contact Page -->
+    <section id="contact" class="page">
+        <section class="contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Get In Touch</h2>
+                    <p>Have questions or ready to book? Contact us using the information below.</p>
+                </div>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <div class="contact-details">
+                            <p>Reach out to us for any inquiries about our vehicles or rental process in Santorini.</p>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Our Location</h4>
+                                    <p>123 Rental Street, Fira, Santorini, Greece</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Phone Number</h4>
+                                    <p>+30 210 123 4567</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Email Address</h4>
+                                    <p>info@rentalgiapis.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Working Hours</h4>
+                                    <p>Monday - Saturday: 8:00 AM - 8:00 PM</p>
+                                    <p>Sunday: 9:00 AM - 5:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Send Us a Message</h3>
+                        
+                        <!-- Form Status Messages -->
+                        <div class="form-status" id="form-status"></div>
+                        
+                        <!-- Contact Form with Formspree Integration -->
+                        <form id="contactForm" action="https://formspree.io/f/xwkgvzkl" method="POST">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="interest">Vehicle Interest</label>
+                                <select id="interest" name="interest">
+                                    <option value="">Select a vehicle</option>
+                                    <!-- Options will be generated by JavaScript -->
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Your Message *</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn" id="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>Rental Giapis</h4>
+                    <p>Providing quality vehicle rentals in Santorini with flexible terms and competitive pricing since 2010.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <p><a href="#home" class="nav-link" data-page="home">Home</a></p>
+                    <p><a href="#vehicles" class="nav-link" data-page="vehicles">Vehicles</a></p>
+                    <p><a href="#contact" class="nav-link" data-page="contact">Contact</a></p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Vehicle Types</h4>
+                    <p>Cars</p>
+                    <p>Scooters</p>
+                    <p>ATVs</p>
+                    <p>Buggies</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Fira, Santorini, Greece</p>
+                    <p><i class="fas fa-phone-alt"></i> +30 210 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@rentalgiapis.com</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> Rental Giapis. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== VEHICLE DATA =====
+        const vehicles = [
+            // Cars
+            {
+                id: 1,
+                name: "Toyota Yaris",
+                type: "car",
+                description: "Compact and fuel-efficient car perfect for navigating Santorini's narrow streets.",
+                imageUrl: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                pricing: [
+                    { period: "January - March", rate: 35 },
+                    { period: "April - June", rate: 50 },
+                    { period: "July - September", rate: 65 },
+                    { period: "October - December", rate: 40 }
+                ]
+            },
+            {
+                id: 2,
+                name: "Fiat 500",
+                type: "car",
+                description: "Iconic Italian compact car with style and charm for your Santorini exploration.",
+                imageUrl: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                pricing: [
+                    { period: "January - March", rate: 40 },
+                    { period: "April - June", rate: 55 },
+                    { period: "July - September", rate: 70 },
+                    { period: "October - December", rate: 45 }
+                ]
+            },
+            {
+                id: 3,
+                name: "Suzuki Swift",
+                type: "car",
+                description: "Nimble and reliable hatchback with great fuel efficiency for island driving.",
+                imageUrl: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                pricing: [
+                    { period: "January - March", rate: 30 },
+                    { period: "April - June", rate: 45 },
+                    { period: "July - September", rate: 60 },
+                    { period: "October - December", rate: 35 }
+                ]
+            },
+            
+            // Scooters
+            {
+                id: 4,
+                name: "Vespa Primavera",
+                type: "scooter",
+                description: "Iconic Italian scooter perfect for zipping around Santorini in style.",
+                imageUrl: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                pricing: [
+                    { period: "January - March", rate: 25 },
+                    { period: "April - June", rate: 35 },
+                    { period: "July - September", rate: 45 },
+                    { period: "October - December", rate: 30 }
+                ]
+            },
+            {
+                id: 5,
+                name: "Honda SH 125",
+                type: "scooter",
+                description: "Reliable and comfortable scooter with great storage for your beach gear.",
+                imageUrl: "https://images.unsplash.com/photo-1558981001-792f6c0d5068?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                pricing: [
+                    { period: "January - March", rate: 20 },
+                    { period: "April - June", rate: 30 },
+                    { period: "July - September", rate: 40 },
+                    { period: "October - December", rate: 25 }
+                ]
+            },
+            
+            // ATVs
+            {
+                id: 6,
+                name: "Honda TRX 420",
+                type: "atv",
+                description: "Powerful ATV for exploring Santorini's rugged terrain and beaches.",
+                imageUrl: "https://images.unsplash.com/photo-1621252179027-94459d6d59b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                pricing: [
+                    { period: "January - March", rate: 45 },
+                    { period: "April - June", rate: 60 },
+                    { period: "July - September", rate: 75 },
+                    { period: "October - December", rate: 50 }
+                ]
+            },
+            {
+                id: 7,
+                name: "Yamaha Raptor 700",
+                type: "atv",
+                description: "High-performance ATV with excellent suspension for adventurous rides.",
+                imageUrl: "https://images.unsplash.com/photo-1621252179010-a4b3a5f5d40a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                pricing: [
+                    { period: "January - March", rate: 50 },
+                    { period: "April - June", rate: 65 },
+                    { period: "July - September", rate: 80 },
+                    { period: "October - December", rate: 55 }
+                ]
+            },
+            
+            // Buggies
+            {
+                id: 8,
+                name: "Polaris RZR 900",
+                type: "buggy",
+                description: "Sporty buggy with roll cage for safe and thrilling Santorini adventures.",
+                imageUrl: "https://images.unsplash.com/photo-1596727147705-61a532a659bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                pricing: [
+                    { period: "January - March", rate: 60 },
+                    { period: "April - June", rate: 80 },
+                    { period: "July - September", rate: 95 },
+                    { period: "October - December", rate: 65 }
+                ]
+            },
+            {
+                id: 9,
+                name: "Can-Am Maverick X3",
+                type: "buggy",
+                description: "High-performance buggy with powerful engine for the ultimate off-road experience.",
+                imageUrl: "https://images.unsplash.com/photo-1596727147705-61a532a659bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                pricing: [
+                    { period: "January - March", rate: 70 },
+                    { period: "April - June", rate: 90 },
+                    { period: "July - September", rate: 110 },
+                    { period: "October - December", rate: 75 }
+                ]
+            },
+            {
+                id: 10,
+                name: "Joyner Renegade",
+                type: "buggy",
+                description: "Comfortable 4-seater buggy perfect for family adventures in Santorini.",
+                imageUrl: "https://images.unsplash.com/photo-1596727147705-61a532a659bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                pricing: [
+                    { period: "January - March", rate: 75 },
+                    { period: "April - June", rate: 95 },
+                    { period: "July - September", rate: 115 },
+                    { period: "October - December", rate: 80 }
+                ]
+            },
+            {
+                id: 11,
+                name: "Beachcomber Buggy",
+                type: "buggy",
+                description: "Open-air buggy designed for coastal exploration and beach access.",
+                imageUrl: "https://images.unsplash.com/photo-1596727147705-61a532a659bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                pricing: [
+                    { period: "January - March", rate: 55 },
+                    { period: "April - June", rate: 70 },
+                    { period: "July - September", rate: 85 },
+                    { period: "October - December", rate: 60 }
+                ]
+            }
+        ];
+
+        // ===== UTILITY FUNCTIONS =====
+        function getLowestPrice(pricing) {
+            return Math.min(...pricing.map(p => p.rate));
+        }
+
+        // ===== RENDER FUNCTIONS =====
+        function renderVehicles() {
+            const container = document.getElementById('vehicles-container');
+            container.innerHTML = '';
+            
+            vehicles.forEach(vehicle => {
+                const typeClass = vehicle.type;
+                const typeLabel = vehicle.type.charAt(0).toUpperCase() + vehicle.type.slice(1);
+                const lowestPrice = getLowestPrice(vehicle.pricing);
+                
+                // Generate pricing table rows
+                let pricingRows = '';
+                vehicle.pricing.forEach((price, index) => {
+                    const seasonClass = ['winter', 'spring', 'summer', 'autumn'][index];
+                    pricingRows += `
+                        <tr class="${seasonClass}">
+                            <td>${price.period}</td>
+                            <td><strong>€${price.rate}/day</strong></td>
+                        </tr>
+                    `;
+                });
+                
+                const card = `
+                    <div class="vehicle-card">
+                        <div class="vehicle-img" style="background-image: url('${vehicle.imageUrl}');">
+                            <span>${vehicle.name.toUpperCase()}</span>
+                        </div>
+                        <div class="vehicle-content">
+                            <div class="vehicle-title">
+                                <h3>${vehicle.name}</h3>
+                                <div class="price">From €${lowestPrice}/day</div>
+                            </div>
+                            <p>${vehicle.description}</p>
+                            <span class="vehicle-type ${typeClass}">${typeLabel}</span>
+                            
+                            <h4 style="margin-top: 20px; margin-bottom: 10px; color: var(--dark);">Seasonal Daily Rates:</h4>
+                            <table class="pricing-table">
+                                <tr>
+                                    <th>Season</th>
+                                    <th>Daily Rate</th>
+                                </tr>
+                                ${pricingRows}
+                            </table>
+                        </div>
+                    </div>
+                `;
+                
+                container.innerHTML += card;
+            });
+        }
+
+        function populateVehicleDropdown() {
+            const select = document.getElementById('interest');
+            vehicles.forEach(vehicle => {
+                const option = document.createElement('option');
+                option.value = vehicle.name;
+                option.textContent = vehicle.name;
+                select.appendChild(option);
+            });
+        }
+
+        // ===== FORM HANDLING =====
+        function setupContactForm() {
+            const contactForm = document.getElementById('contactForm');
+            const formStatus = document.getElementById('form-status');
+            const submitBtn = document.getElementById('submit-btn');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    // Disable button to prevent multiple submissions
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Sending...';
+                    
+                    try {
+                        // Send form data to Formspree
+                        const response = await fetch(contactForm.action, {
+                            method: 'POST',
+                            body: new FormData(contactForm),
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        if (response.ok) {
+                            // Show success message
+                            formStatus.textContent = "Thank you for your message! We'll contact you soon.";
+                            formStatus.className = "form-status success";
+                            
+                            // Reset form
+                            contactForm.reset();
+                        } else {
+                            // Show error message
+                            formStatus.textContent = "Oops! There was a problem sending your message. Please try again.";
+                            formStatus.className = "form-status error";
+                        }
+                    } catch (error) {
+                        // Show error message
+                        formStatus.textContent = "Oops! There was a problem sending your message. Please try again.";
+                        formStatus.className = "form-status error";
+                        console.error('Form submission error:', error);
+                    } finally {
+                        // Re-enable button
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Send Message';
+                        
+                        // Scroll to the status message
+                        formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                });
+            }
+        }
+
+        // ===== PAGE MANAGEMENT =====
+        function setupPageNavigation() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('nav ul');
+            
+            // Set home page as active initially
+            document.getElementById('home').classList.add('active');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetPage = this.getAttribute('data-page');
+                    
+                    // Update active class for navigation
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show target page
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                        if (page.id === targetPage) {
+                            page.classList.add('active');
+                        }
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                    }
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            });
+            
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        function setCurrentYear() {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        }
+
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Render initial content
+            renderVehicles();
+            setCurrentYear();
+            populateVehicleDropdown();
+            
+            // Set up event listeners
+            setupPageNavigation();
+            setupContactForm();
+        });
+    </script>
+</body>
+</html>
