@@ -659,7 +659,36 @@
                 margin-left: 0;
             }
         }
-    </style>
+    
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+    nav a {
+        font-size: 16px;
+    }
+    .vehicles-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .feature-card, .vehicle-card {
+        padding: 20px !important;
+    }
+    .btn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+    .contact-form input, .contact-form textarea, .contact-form select {
+        font-size: 14px;
+    }
+}
+
+</style>
 </head>
 <body>
     <!-- Header Section -->
